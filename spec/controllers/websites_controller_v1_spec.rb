@@ -28,4 +28,13 @@ RSpec.describe Api::V1::WebsitesController, type: :controller do
     end
   end
 
+  describe 'PATCH /api/v1/websites/id' do
+    it 'Consegue atualizar um website e retornar status 200?' do
+      website = Website.last
+      patch :update, params: {website: {url: 'google.com', description: 'buscador web'}, id: website.id}
+      expect(response.body).to include_json(description: 'buscador web')
+      expect(response).to have_http_status(200)
+    end
+  end
+
 end

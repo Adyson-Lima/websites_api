@@ -18,4 +18,14 @@ RSpec.describe Website, type: :model do
 
   end
 
+  describe 'Testes de validação dos campos do model Website' do
+
+    it 'objeto website valido com campos obrigatorios preenchidos?' do
+      @website.url = ''
+      @website.description = ''
+      expect(@website).to be_valid
+    end
+
+  end
+
 end

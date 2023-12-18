@@ -1,10 +1,14 @@
 class Api::V1::WebsitesController < ApplicationController
 
-  # before_action :set_website, only: %i[] # show update destroy
+  before_action :set_website, only: %i[show] # show update destroy
 
   def index
     @websites = Website.all 
     render json: @websites
+  end
+
+  def show
+    render json: @website
   end
 
 private 

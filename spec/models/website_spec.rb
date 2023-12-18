@@ -11,6 +11,11 @@ RSpec.describe Website, type: :model do
       expect(@website.url).to eq('olx.com.br')
     end
 
+    it 'description consegue ser preenchido?' do
+      @website.description = ''
+      expect(@website.description).to eq('site de vendas')
+    end
+
   end
 
 end

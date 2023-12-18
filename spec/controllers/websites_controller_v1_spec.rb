@@ -37,4 +37,13 @@ RSpec.describe Api::V1::WebsitesController, type: :controller do
     end
   end
 
+  describe 'DELETE /api/v1/websites/id' do
+    it 'Consegue excluir um website e retornar status 204?' do
+      website = Website.last
+      delete :destroy, params: {id: website.id}
+      expect(Website.all).not_to include(website)
+      expect(response).to have_http_status(204)
+    end
+  end
+
 end

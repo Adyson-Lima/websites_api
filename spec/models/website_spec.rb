@@ -7,7 +7,7 @@ RSpec.describe Website, type: :model do
   describe 'Testes de preenchimento dos campos do model Website' do
     
     it 'url consegue ser preenchido?' do
-      @website.url = ''
+      @website.url = 'olx.com.br'
       expect(@website.url).to eq('olx.com.br')
     end
 

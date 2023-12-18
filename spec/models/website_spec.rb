@@ -26,6 +26,11 @@ RSpec.describe Website, type: :model do
       expect(@website).to be_valid
     end
 
+    it 'objeto website invalido com campos obrigatorios não preenchidos?' do
+      website = Website.new
+      expect(website).to be_valid
+    end
+
   end
 
 end

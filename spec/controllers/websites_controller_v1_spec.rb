@@ -20,4 +20,12 @@ RSpec.describe Api::V1::WebsitesController, type: :controller do
     end
   end
 
+  describe 'POST /api/v1/websites' do
+    it 'Consegue criar um website e retornar status 201?' do
+      post :create, params: {website: {url: 'workana.com', description: 'site de freelancers'}, format: :json}
+      expect(response.body).to include_json(url: 'workana.com')
+      expect(response).to have_http_status(201)
+    end
+  end
+
 end

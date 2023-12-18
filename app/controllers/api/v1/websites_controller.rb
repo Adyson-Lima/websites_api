@@ -11,6 +11,15 @@ class Api::V1::WebsitesController < ApplicationController
     render json: @website
   end
 
+  def create
+    @website = Website.new(website_params)
+    if @website.save
+      render json: @website, status: :created, location: api_v1_website_url(@website)
+    else
+      render json: @website.errors, status: :unprocessable_entity
+    end
+  end
+
 private 
 
 def set_website
@@ -18,7 +27,7 @@ def set_website
 end
 
 def website_params
-  params.require(:website).permit(:url, :descrition)
+  params.require(:website).permit(:url, :description)
 end
 
 end
